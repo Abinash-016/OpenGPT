@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppContext } from '../Context/AppContext';
 import { assets } from '../assets/assets';
-import moment from 'moment' ;
+import moment from 'moment';
 
 const Sidebar = () => {
   const { chats, setSelectedChat, theme, setTheme, user } = useAppContext();
@@ -35,35 +35,35 @@ const Sidebar = () => {
 
       {/* Recent Chats */}
       {chats.length > 0 && <p className='mt-4 text-sm'>Recent Chats</p>}
-<div className='flex-1 overflow-y-scroll mt-3 text-sm space-y-3'>
-  {chats
-    .filter(chat => {
-      // Check if chat.messages is an array and has length, else fallback to chat.name
-      if (Array.isArray(chat.messages) && chat.messages.length > 0) {
-        return chat.messages[0]?.content.toLowerCase().includes(search.toLowerCase());
-      } else {
-        return chat.name.toLowerCase().includes(search.toLowerCase());
-      }
-    })
-    .map(chat => (
-      <div
-        key={chat._id}
-        className='p-2 px-4 dark:bg-[#57317C]/10 border border-gray-300 dark:border-[#80609F]/15 rounded-md cursor-pointer flex justify-between group'
-      >
-        <div>
-          <p className='truncate w-full'>
-            {Array.isArray(chat.messages) && chat.messages.length > 0
-              ? chat.messages[0]?.content.slice(0, 32)
-              : chat.name}
-          </p>
-          <p className='text-xs text-gray-500 dark:text-[#B1A6C0]'>
-            {moment(chat.updatedAt).fromNow()}
-          </p>
-        </div>
-        <img src={assets.bin_icon} className='hidden group-hover:block w-4 cursor-pointer not-dark:invert' alt="" />
+      <div className='flex-1 overflow-y-scroll mt-3 text-sm space-y-3'>
+        {chats
+          .filter(chat => {
+            // Check if chat.messages is an array and has length, else fallback to chat.name
+            if (Array.isArray(chat.messages) && chat.messages.length > 0) {
+              return chat.messages[0]?.content.toLowerCase().includes(search.toLowerCase());
+            } else {
+              return chat.name.toLowerCase().includes(search.toLowerCase());
+            }
+          })
+          .map(chat => (
+            <div
+              key={chat._id}
+              className='p-2 px-4 dark:bg-[#57317C]/10 border border-gray-300 dark:border-[#80609F]/15 rounded-md cursor-pointer flex justify-between group'
+            >
+              <div>
+                <p className='truncate w-full'>
+                  {Array.isArray(chat.messages) && chat.messages.length > 0
+                    ? chat.messages[0]?.content.slice(0, 32)
+                    : chat.name}
+                </p>
+                <p className='text-xs text-gray-500 dark:text-[#B1A6C0]'>
+                  {moment(chat.updatedAt).fromNow()}
+                </p>
+              </div>
+              <img src={assets.bin_icon} className='hidden group-hover:block w-4 cursor-pointer not-dark:invert' alt="" />
+            </div>
+          ))}
       </div>
-    ))}
-</div>
 
     </div>
   );
