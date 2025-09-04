@@ -4,7 +4,7 @@ import { assets } from '../assets/assets';
 import moment from 'moment';
 
 const Sidebar = () => {
-  const { chats, setSelectedChat, theme, setTheme, user } = useAppContext();
+  const { chats, setSelectedChat, theme, setTheme, user, navigate } = useAppContext();
   const [search, setSearch] = useState('');
 
   return (
@@ -63,6 +63,35 @@ const Sidebar = () => {
               <img src={assets.bin_icon} className='hidden group-hover:block w-4 cursor-pointer not-dark:invert' alt="" />
             </div>
           ))}
+      </div>
+
+
+      {/*community tab btn*/}
+      <div onClick={() => { navigate('/community') }} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+        <img src={assets.gallery_icon} className='w-4.5 not-dark:invert' alt="" />
+        <div className='flex flex-col text-sm'>
+          <p>Community Images</p>
+        </div>
+      </div>
+
+      {/*credit purchased */}
+
+      <div onClick={() => { navigate('/credits') }} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+        <img src={assets.diamond_icon} className='w-4.5 dark:invert' alt="" />
+        <div className='flex flex-col text-sm'>
+          <p>Credit: {user?.credits}</p>
+        </div>
+      </div>
+
+      {/*dark mode btn*/}
+      <div  className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md'>
+        <img src={assets.theme_icon} className='w-4.5 not-dark:invert' alt="" />
+        <div className='flex items-center  gap-2 text-sm'>
+          <p>Dark Mode</p>
+        </div>
+        <label className='relative inline-flex cursor-pointer'>
+          <input onClick={()=>setTheme(theme=== 'dark'? 'light' : 'dark')} type="checkbox" className="sr-only peer" checked={theme === 'dark'}/>
+        </label>
       </div>
 
     </div>
