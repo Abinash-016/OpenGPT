@@ -1,11 +1,12 @@
 import React from 'react'
-import Sidebar from './Components/Sidebar'
+import Sidebar from './Components/SIdebar'
 import { Route, Routes } from 'react-router-dom'
 import ChatBox from './Components/ChatBox'
 import Credits from './Pages/Credits'
 import Community from './Pages/Community'
 import  { useState } from 'react';
 import { assets } from './assets/assets'; 
+import './assets/prism.css'
 
 const App = () => {
 

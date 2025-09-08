@@ -71,7 +71,7 @@ const Sidebar = ({isMenuOpen, setMenuOpen}) => {
 
 
       {/*community tab btn*/}
-      <div onClick={() => { navigate('/community') }} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+      <div onClick={() => { navigate('/community') ; setMenuOpen(false) }} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
         <img src={assets.gallery_icon} className='w-4.5 not-dark:invert' alt="" />
         <div className='flex flex-col text-sm'>
           <p>Community Images</p>
@@ -80,7 +80,7 @@ const Sidebar = ({isMenuOpen, setMenuOpen}) => {
 
       {/*credit purchased */}
 
-      <div onClick={() => { navigate('/credits') }} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
+      <div onClick={() => { navigate('/credits') ;setMenuOpen(false) }} className='flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all'>
         <img src={assets.diamond_icon} className='w-4.5 dark:invert' alt="" />
         <div className='flex flex-col text-sm'>
           <p>Credit: {user?.credits}</p>
