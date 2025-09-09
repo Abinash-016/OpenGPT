@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAppContext } from '../Context/AppContext'
 import { assets } from '../assets/assets'
 import Message from './Message'
 
 const ChatBox = () => {
+
+  const containerRef=useRef(null)
 
   const { selectedChat, theme } = useAppContext()
 
@@ -25,11 +27,18 @@ const ChatBox = () => {
     }
   }, [selectedChat])
 
+  useEffect(()=>{
+    if(containerRef.current){
+      containerRef.current.scrollTo({
+        top:containerRef.current.scrollHeight, behavior:"smooth"
+      })
+    }
+  }, [messages])
 
   return (
     <div className='flex-1 flex flex-col justify-between m-5 md:m-10 xl:mx-30 max-md:mt-14 2xl:pr-40'>
       {/* Chat Messages */}
-      <div className='flex-1 mb-5 overflow-y-scroll'>
+      <div ref={containerRef} className='flex-1 mb-5 overflow-y-scroll'>
         {messages.length === 0 && (
 
           <div className='h-full flex flex-col items-center justify-center gap-2 text-primary'>
@@ -49,6 +58,19 @@ const ChatBox = () => {
         }
 
       </div>
+
+      {mode === 'image' && (
+        <label className='inline-flex items-center gap-2 mb-3 text-sm mx-auto'>
+          <p className='text-xs'>Publish Generated Image to Community</p>
+          <input
+            type="checkbox"
+            className='cursor-pointer'
+            checked={isPublished}
+            onChange={(e) => setIsPublished(e.target.checked)}
+          />
+        </label>
+      )}
+
 
       {/* Prompt Input Box */}
       <form onSubmit={onSubmit} className='bg-primary/20 dark:bg-[#583C79]/30 border border-primary 
