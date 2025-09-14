@@ -8,9 +8,10 @@ import { assets } from "./assets/assets";
 import Loading from "./Pages/Loading";
 import { useAppContext } from "./Context/AppContext";
 import Login from "./Pages/Login";
+import {Toaster} from 'react-hot-toast'
 
 const App = () => {
-  const { user, setUser } = useAppContext();
+  const { user, setUser,loadingUser } = useAppContext();
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
 
@@ -20,6 +21,7 @@ const App = () => {
 
   return (
     <>
+    <Toaster/>
       {!isMenuOpen && (
         <img
           src={assets.menu_icon}
