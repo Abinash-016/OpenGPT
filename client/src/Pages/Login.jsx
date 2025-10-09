@@ -29,6 +29,8 @@ const handleSubmit = async (e) => {
 }
 
 
+
+
   return (
     <div className="min-h-screen flex items-center justify-center
                 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-400">
@@ -42,6 +44,7 @@ const handleSubmit = async (e) => {
           <input onChange={(e) => setName(e.target.value)} value={name} placeholder="Type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500" type="text" required />
         </div>
       )}
+
       <div className="w-full ">
         <p>Email</p>
         <input onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Type here" className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500" type="email" required />
@@ -59,11 +62,13 @@ const handleSubmit = async (e) => {
           Create an account? <span onClick={() => setState("register")} className="text-indigo-700 cursor-pointer">click here</span>
         </p>
       )}
+
       <button type="submit" className="bg-indigo-500 hover:bg-purple-600 transition-all text-white w-full py-2 rounded-md cursor-pointer">
         {state === "register" ? "Create Account" : "Login"}
       </button>
     </form>
     </div>
+    
   );
 };
 
